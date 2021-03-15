@@ -1,5 +1,7 @@
 <?php
-
+/*
+Classe que faz conexao com o banco de dados. Essa classe pode ser reutilizada em outras classes para abrir conexao
+*/
 class Conexao
 {
     private static $conexao;

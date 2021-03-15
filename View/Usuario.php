@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Classe Usuario 
+ * Classe Usuario, nesta classe deve conter todos as acoes que o usuario do sistema pode fazer.
  * @author Victor Machado Lobo da silva - 11-03-2021
  */
 class Usuario
@@ -30,9 +30,10 @@ class Usuario
     }
 
     /**
-     * Salvar o contato
+     * Inserir na tabela de usuarios
      * @return boolean
      */
+    /*
     public function save()
     {
         $colunas = $this->preparar($this->atributos);
@@ -41,21 +42,37 @@ class Usuario
                 implode(', ', array_keys($colunas)).
                 ") VALUES (".
                 implode(', ', array_values($colunas)).");";
-        } else {
-            foreach ($colunas as $key => $value) {
-                if ($key !== 'id') {
-                    $definir[] = "{$key}={$value}";
+        
+            if ($conexao = Conexao::getInstance()) {
+                $stmt = $conexao->prepare($query);
+                if ($stmt->execute()) {
+                    return $stmt->rowCount();
                 }
             }
-            $query = "UPDATE usuarios SET ".implode(', ', $definir)." WHERE id='{$this->id}';";
-        }
-        if ($conexao = Conexao::getInstance()) {
-            $stmt = $conexao->prepare($query);
-            if ($stmt->execute()) {
-                return $stmt->rowCount();
+        } 
+        
+        return false;
+    }
+    */
+    public function cadastrar($nome,$cpf,$telefone,$login,$senha){
+        $senhaMD5=MD5($senha);
+        $conexao = Conexao::getInstance();
+        $stmt = $conexao->prepare("SELECT ID FROM usuarios WHERE cpf = $cpf");
+        if($stmt->rowCount() > 0){
+            // já existe um usuario, entao vamos retornar o valor falso, para nao cadastrar novamente 
+            return false;
+        }else{
+            // não existe, cadastrar
+            $query = "INSERT INTO usuarios (nome,cpf,telefone,email,senha) values ('$nome','$cpf','$telefone','$login','$senha'); ";
+           echo $query;
+            if ($conexao = Conexao::getInstance()) {
+                $stmt = $conexao->prepare($query);
+                if ($stmt->execute()) {
+                    return $stmt->rowCount();
+                }
             }
         }
-        return false;
+
     }
 
     /**
@@ -156,6 +173,25 @@ class Usuario
         $conexao = Conexao::getInstance();
         if ($conexao->exec("DELETE FROM usuarios WHERE id='{$id}';")) {
             return true;
+        }
+        return false;
+    }
+     /**
+     * fazer login do usuario no sistema
+     * @param type 
+     * @return boolean
+     */
+    public static function login($email , $senha)
+    {
+        $conexao = Conexao::getInstance();
+        $stmt    = $conexao->prepare("SELECT * FROM usuarios WHERE email='{$email}' AND senha ='{$senha}' ;");
+        if ($stmt->execute()) {
+            if ($stmt->rowCount() > 0) {
+                $resultado = $stmt->fetchObject('Usuario');
+                    if ($resultado) {
+                        return $resultado;
+                    }
+            }
         }
         return false;
     }
