@@ -1,0 +1,95 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16/03/2021, 20:55:29
+    Author     : Lobo
+*/
+
+body,
+html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #31AFB4 !important;
+}
+.user_card {
+        height: 550px;
+        width: 400px;
+        margin-top: auto;
+        margin-bottom: auto;
+        background: #16623B;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+
+}
+.brand_logo_container {
+        position: absolute;
+        height: 107px;
+        width: 206px;
+        top: -25px;
+        border-radius: 5px;
+        background: #FFD700;
+        padding: 5px;
+        text-align: center;
+}
+.brand_logo {
+        height: 107px;
+        width: 206px;
+        border-radius: 5px;
+        border: 2px;
+}
+.form_container {
+        margin-top: 80px;
+}
+.cadastrar_btn {
+        margin-top: 10px;
+        background: #31AFB4 !important;
+        color: white !important;
+        margin-left: 5px;
+}
+.cadastrar_btn:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+}
+.voltar_btn {
+        padding-right: 20px;
+        padding-left: 20px;
+        margin-left: 15px;
+        margin-top: 10px;
+        background: #c0392b !important;
+        color: white !important;
+}
+.voltar_btn:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+}
+.cadastrar_container {
+        padding: 0 2rem;
+}
+.voltar_container {
+        padding: 0 2rem;
+}
+.input_pass:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+}
+.ml-2 {
+        color: #FFD700;
+}
+a:hover {
+        color: white;
+}
+.mb-3 {
+        width: 300px;
+        border-radius: 5px;
+}
