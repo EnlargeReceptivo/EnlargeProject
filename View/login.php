@@ -11,7 +11,7 @@
             if($u->login($login,$senha)){
               $_COOKIE['login']= $_POST['login'];
               echo "variavel global: ".$_COOKIE['login'];
-              header("location: index.html");
+              header("location: index.php");
             }else{
                 echo "<script language='javascript' type='text/javascript'>alert('Não foi possivel logar no sistema!')</script>";
                 echo "<script language='javascript' type='text/javascript'>window.location.href='login.html';</script>";

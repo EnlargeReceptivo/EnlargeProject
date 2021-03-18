@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="css/homeStyle.css">
+        <link rel="stylesheet" type="text/css" href="homeStyle.css">
     </head>
     <body class="teste">
 	<div class="menu">
@@ -17,7 +17,7 @@
                 <div class="logo">
                     <a href="telaGenerica.php">
 		<div class="brand_logo_container">	
-                    <img src ="images/logo-radio.png" class="brand_logo">
+                    <img src ="logo-radio.png" class="brand_logo">
 		</div>
                     </a>
 		</div>
@@ -49,15 +49,30 @@
             </div>
 	</div>
 	<div class="container">
-            <div class="jumbotron" style="margin-top: 20px;">
-                <h1 class="display-4">Seja Bem-Vindo!</h1>
-                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-                <hr class="my-4">
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-                <p class="lead">
-                  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-                </p>
-            </div>
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">email</th>
+                    <th scope="col">senha</th>
+
+                  </tr>
+                </thead>
+              <tbody>
+              <?php 
+              while($dados = mysqli_fetch_array($resultado)){
+                $email = $dados['email'];
+                $senha = $dados['senha']; ?>
+               <tr>
+                    <th scope="row"></th>
+                    <td><?php $email ?></td>
+                    <td><?php $senha ?></td>
+
+                  </tr> 
+               <?php } ?>
+               </tbody>
+              </table>
+               
 	</div>
     </body>
 </html>

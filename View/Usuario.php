@@ -54,6 +54,33 @@ class Usuario
         return false;
     }
     */
+    
+     public function save()
+    {
+        $colunas = $this->preparar($this->atributos);
+        if (!isset($this->id)) {
+            $query = "INSERT INTO usuarios (".
+                implode(', ', array_keys($colunas)).
+                ") VALUES (".
+                implode(', ', array_values($colunas)).");";
+        } else {
+            foreach ($colunas as $key => $value) {
+                if ($key !== 'id') {
+                    $definir[] = "{$key}={$value}";
+                }
+            }
+            $query = "UPDATE usuarios SET ".implode(', ', $definir)." WHERE id='{$this->id}';";
+        }
+        if ($conexao = Conexao::getInstance()) {
+            $stmt = $conexao->prepare($query);
+            if ($stmt->execute()) {
+                return $stmt->rowCount();
+            }
+        }
+        return false;
+    }
+    
+    
     public function cadastrar($nome,$cpf,$telefone,$login,$senha){
         $senhaMD5=MD5($senha);
         $conexao = Conexao::getInstance();

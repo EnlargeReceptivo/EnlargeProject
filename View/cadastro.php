@@ -15,7 +15,7 @@
             if($u->cadastrar($nome,$cpf,$telefone,$login,$senha)){
               $_COOKIE['login']= $_POST['login'];
               echo "variavel global: ".$_COOKIE['login'];
-              header("location: index.html");
+              header("location: sucessoCadastro.html");
             }else{
                 echo "<script language='javascript' type='text/javascript'>alert('Não foi possivel cadastrar o usuario no sistema!')</script>";
                 echo "<script language='javascript' type='text/javascript'>window.location.href='login.html';</script>";
