@@ -1,128 +1,161 @@
-.teste {
-	background-color: #F0F8FF;
-	/*background-image: url("Background.png");*/
-	background-position: center;
-	background-repeat: no-repeat;
-	margin-top: 10px;
-
+html, body {
+    color: #566787;
+    font-family: 'Varela Round', sans-serif;
+    padding: 0;
+    margin: 0;
 }
+
+.teste {
+    background-color: ghostwhite;
+    background-image: url("Background.png");
+    background-position: bottom;
+    margin-top: 10px;
+}
+
 .menu{
-	width: 100%;
-	height: 125px;
-	background-color: #16623B;
+    width: 100%;
+    height: 125px;
+    background-color: #34b1b6;
 }
 
 .menuInterior{
-	/*width: 1000px;
-	margin: auto;*/
-            margin-left: 60px;
+    width: 1000px;
+    margin: auto;
 }
 
 .logo{
-	color: #fff;
-	display: inline-block;
-	width: 10%;
-	margin-top: 10px;
+    display: inline-block;
+    width: 10%;
+    margin-top: 10px;
+}
+
+.logo div:hover {
+    background-color: #FFD700;
+    padding: 6px;
+    -webkit-transition: .5s;   
 }
 
 .logo h1{
-	line-height: 60px;
+    line-height: 60px;
 }
 
 .busca{
-	display: inline-block;
-	width: 60%;
-	margin-left: 80px;
+    display: inline-block;
+    width: 60%;
+    margin-left: 80px;
 }
 
 .btnLogin {
-	display: inline-block;
-	margin-left: 50px;
+    display: inline-block;
+    margin-right: 0px;
 }
 
 .btnLogin img {
-	margin-left: 140px;
-	width: 60px;
-	height: 60px;
+    margin-left: 140px;
+    width: 60px;
+    height: 60px;
 }
 
 .menuprodutos{
-	height: 40px;
-	width: 75%;
-	margin-left: 240px;
+    margin-top: 7.5px;
+    height: 40px;
+    width: 75%;
+    margin-left: 240px;
 }
 
 .menuprodutos ul{
-	margin: 0px;
-	padding: 0px;
-	list-style: none;
-	display:block;	
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display:block;	
 }
 
 .menuprodutos li{
-	height: 30px;
-	float: left;
-	line-height: 30px;
-	padding-left: 8px;
-	padding-right:8px;
-	width: 12%;
-	text-align: center
+    height: 30px;
+    float: left;
+    line-height: 30px;
+    padding-left: 8px;
+    padding-right:8px;
+    width: 12%;
+    text-align: center
 }
 
 .menuprodutos li a{
-	text-decoration: none;
-	color: #fff;
-	font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-family: heveltica;
 }
 
 .menuprodutos li:hover{
-	background-color: #FFD700;
-	border-radius: 5px;
+    border-radius: 5px;
+    background-color: #67967e;
+    border-color: #67967e;
+    -webkit-transition: .5s;
 }
 
 .menuprodutos li:hover a{
-	color: #c0392b;
-	font-weight: bold;
-}
-
-.user_card {
-	height: 550px;
-	width: 400px;
-	margin-top: auto;
-	margin-bottom: auto;
-	background: #16623B;
-	position: relative;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	padding: 10px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	border-radius: 5px;
+    color: ghostwhite;
+    font-weight: bold;
 }
 
 .brand_logo_container {
-	position: center;
-	height: 75px;
-	width: 75px;
-	top: -25px;
-	border-radius: 50%;
-	background: #FFD700;
-	padding: 2px;
+    position: center;
+    height: 77px;
+    width: 77px;
+    top: -25px;
+    border-radius: 50%;
+    background: #16623B;
+    padding: 3px;
 }
 
 .brand_logo {
-	position: center;
-	height: 75px;
-	width: 75px;
-	border-radius: 50%	;
-	border: 2px;
-	max-width:100%;
-	max-height:100%;
+    position: center;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%	;
+    border: 2px;
+    max-width:100%;
+    max-height:100%;
 }
 
 .mb-3 {
-	width: 300px;
-	border-radius: 5px;
+    width: 300px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #16623B;
+    border-color: #16623B;
+}
+.btn-primary:hover {
+    background-color: #67967e;
+    border-color: #67967e;
+}
+
+.btn-primary:focus {
+    background-color: #67967e;
+    border-color: #67967e;
+}
+
+.btn-warning {
+    background-color: #e6b800;
+}
+
+.btn-warning:hover {
+    background-color: #806600;
+}
+
+.menupicked li {
+    background-color: #16623B;
+    border-radius: 5px;
+    color: ghostwhite;
+    font-weight: bold;
+}
+
+.menupicked li:hover {
+    background-color: #16623B;
+    border-radius: 5px;
+    color: ghostwhite;
+    font-weight: bold;
 }

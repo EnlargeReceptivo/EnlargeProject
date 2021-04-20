@@ -14,49 +14,65 @@ spl_autoload_register(function($class) {
     <header>
         <meta charset="utf-8">
         <title>Area Administrativa Enlarge</title>
-        <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB' crossorigin='anonymous' />
-        <link href='https://use.fontawesome.com/releases/v5.1.0/css/all.css' rel='stylesheet' integrity='sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt' crossorigin='anonymous' />
-        <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49' crossorigin='anonymous'></script>
-        <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js' integrity='sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T' crossorigin='anonymous'></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+        
         <link rel="stylesheet" type="text/css" href="css/homeStyle.css">
+         <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto|Varela+Round">
+            <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+            <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.6.1/css/all.css">
+            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+            <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="//cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="css/cadastroProdutoServico.css">
     </header>
-    <body>
-    <div class="menu">
-            <div class="menuInterior" style="margin-top: -10px;">
+   
+    <body class="teste">
+	<div class="menu">
+            <div class="menuInterior">
                 <div class="logo">
                     <a href="index.php">
-		<div class="brand_logo_container">	
-                    <img src ="logo-radio.png" class="brand_logo">
-		</div>
+                    <div class="brand_logo_container">
+                        <img src ="images/logo-radio.png" class="brand_logo">
+                    </div>
                     </a>
-		</div>
+                </div>
 			
-		<div class="busca">
+                <div class="busca">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Pesquisar..." aria-label="O que você está procurando?" aria-describedby="button-addon2">
-                        <div class="input-group-append">
-                            <a href="request.php" class="btn btn-danger">Busca</a>
-			</div>
+                            <div class="input-group-append">
+                                <a href="request.php" class="btn btn-primary">Busca</a>
+                            </div>
                     </div>
-		</div>
+                </div>
 			
-		<div class="btnLogin">
-                    <a href="login.html" class='btn btn-warning'>	
-                       Sair
+                <div class="btnLogin">
+                    <a href="login.html">	
+                        <img src="images/user_icon.png">
                     </a>
-		</div>
+                </div>
 
-		<div class="menuprodutos">
+                <div class="menuprodutos">
                     <ul>
-                        <li><a href="telaGenerica.php">Começar</a></li>	
-			<li><a href="telaGenerica.php">Serviços</a></li>
-			<li><a href="telaGenerica.php">Reservas</a></li>
-			<li><a href="?controller=UsuariosController&method=listar">Usuarios</a></li>
-			<li><a href="telaGenerica.php">Relatórios</a></li>
+                        <li><a href="index.php">Início</a></li>	
+                        <li><a href="?controller=ServicoController&method=listar">Serviços</a></li>
+                        <li><a href="telaGenerica.php">Reservas</a></li>
+                        <li><a href="?controller=UsuariosController&method=listar">Usuarios</a></li>
+                        <li><a href="telaGenerica.php">Relatórios</a></li>
                     </ul>
-		</div>
+                </div>
             </div>
+	</div>
+	<div class="container">
+		
 	</div>
         <?php
         if ($_GET) {
@@ -77,10 +93,9 @@ spl_autoload_register(function($class) {
         } else {
             echo '<div class="container">';
             echo '<h1>Bem-vindo a pagina Administrativa Enlarge!</h1> <br /><br />';
+            //echo '<a href="?controller=UsuariosController&method=listar" class="btn btn-success">Vamos Começar!</a></div>';
             echo '</div>';
         }
         ?>
-
-
     </body>
 </html>

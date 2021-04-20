@@ -9,7 +9,7 @@ class UsuariosController extends Controller
     public function listar()
     {
         $usuarios = Usuario::all();
-        return $this->view('grade', ['usuarios' => $usuarios]);
+        return $this->view('grade_usuario', ['usuarios' => $usuarios]);
     }
 
     /**
@@ -17,7 +17,7 @@ class UsuariosController extends Controller
      */
     public function criar()
     {
-        return $this->view('form');
+        return $this->view('form_usuario');
     }
 
     /**
@@ -28,7 +28,7 @@ class UsuariosController extends Controller
         $id      = (int) $dados['id'];
         $usuario = Usuario::find($id);
 
-        return $this->view('form', ['usuario' => $usuario]);
+        return $this->view('form_usuario', ['usuario' => $usuario]);
     }
 
     /**
@@ -37,11 +37,11 @@ class UsuariosController extends Controller
     public function salvar()
     {
         $usuario           = new Usuario;
-        $usuario->nome     = $this->request->nome;
-        $usuario->telefone = $this->request->telefone;
-        $usuario->email    = $this->request->email;
-        $usuario->senha    = $this->request->senha;
-        $usuario->cpf    = $this->request->cpf;
+        $usuario->ds_nome     = $this->request->ds_nome;
+        $usuario->nr_telefone = $this->request->nr_telefone;
+        $usuario->ds_email    = $this->request->ds_email;
+        $usuario->ds_senha    = $this->request->ds_senha;
+        $usuario->nr_cpf    = $this->request->nr_cpf;
         if ($usuario->save()) {
             return $this->listar();
         }
@@ -54,9 +54,11 @@ class UsuariosController extends Controller
     {
         $id                = (int) $dados['id'];
         $usuario           = Usuario::find($id);
-        $usuario->nome     = $this->request->nome;
-        $usuario->telefone = $this->request->telefone;
-        $usuario->email    = $this->request->email;
+        
+        $usuario->ds_nome     = $this->request->ds_nome;
+        $usuario->nr_telefone = $this->request->nr_telefone;
+        $usuario->ds_email    = $this->request->ds_email;
+        
         $usuario->save();
 
         return $this->listar();

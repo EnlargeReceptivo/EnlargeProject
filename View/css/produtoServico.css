@@ -1,0 +1,377 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 04/04/2021, 18:05:45
+    Author     : Lobo
+*/
+body {
+    color: #566787;
+    background: #566787;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 13px;
+}
+
+.teste {
+    background-color: ghostwhite;
+    background-image: url("Background.png");
+    background-position: bottom;
+    margin-top: 10px;
+}
+
+.menu{
+    width: 100%;
+    height: 125px;
+    background-color: #34b1b6;
+}
+
+.menuInterior{
+    width: 1000px;
+    margin: auto;
+}
+
+.logo{
+    display: inline-block;
+    width: 10%;
+    margin-top: 10px;
+}
+
+.logo div:hover {
+    background-color: #FFD700;
+    padding: 6px;
+    -webkit-transition: .5s;   
+}
+
+.logo h1{
+    line-height: 60px;
+}
+
+.busca{
+    display: inline-block;
+    width: 60%;
+    margin-left: 80px;
+}
+
+.btnLogin {
+    display: inline-block;
+    margin-right: 0px;
+}
+
+.btnLogin img {
+    margin-left: 140px;
+    width: 60px;
+    height: 60px;
+}
+
+.menuprodutos{
+    height: 40px;
+    width: 75%;
+    margin-left: 240px;
+}
+
+.menuprodutos ul{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    display:block;	
+}
+
+.menuprodutos li{
+    height: 30px;
+    float: left;
+    line-height: 30px;
+    padding-left: 8px;
+    padding-right:8px;
+    width: 12%;
+    text-align: center
+}
+
+.menuprodutos li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-family: heveltica;
+}
+
+.menuprodutos li:hover{
+    border-radius: 5px;
+    background-color: #67967e;
+    border-color: #67967e;
+    -webkit-transition: .5s;
+}
+
+.menuprodutos li:hover a{
+    color: ghostwhite;
+    font-weight: bold;
+}
+
+.user_card {
+    height: 550px;
+    width: 400px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #16623B;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+}
+
+.brand_logo_container {
+    position: center;
+    height: 77px;
+    width: 77px;
+    top: -25px;
+    border-radius: 50%;
+    background: #16623B;
+    padding: 3px;
+}
+
+.brand_logo {
+    position: center;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%	;
+    border: 2px;
+    max-width:100%;
+    max-height:100%;
+}
+
+.mb-3 {
+    width: 300px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: #16623B;
+    border-color: #16623B;
+}
+.btn-primary:hover {
+    background-color: #67967e;
+    border-color: #67967e;
+}
+
+.btn-primary:active{
+    background-color: #67967e !important;
+    border-color: #67967e !important;
+}
+
+.btn-primary:focus{
+    background-color: #004d00 !important;
+    border-color: #004d00 !important;
+}
+
+.btn-warning {
+    background-color: #e6b800;
+}
+
+.btn-warning:hover {
+    background-color: #806600;
+}
+
+.menupicked li {
+    background-color: #16623B;
+    border-radius: 5px;
+    color: ghostwhite;
+    font-weight: bold;
+}
+
+.menupicked li:hover {
+    background-color: #16623B;
+    border-radius: 5px;
+    color: ghostwhite;
+    font-weight: bold;
+}
+
+.table-responsive {
+    margin: 30px 0;
+}
+.table-wrapper {
+    min-width: 1000px;
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.table-title {        
+    padding-bottom: 15px;
+    background: #67967e;
+    color: #fff;
+    padding: 16px 30px;
+    margin: -20px -25px 10px;
+    border-radius: 3px 3px 0 0;
+}
+.table-title h2 {
+    margin: 5px 0 0;
+    font-size: 24px;
+}
+.table-title .btn-group {
+    float: right;
+}
+.table-title .btn {
+    color: #fcfcfc;
+    float: right;
+    font-size: 13px;
+    border: none;
+    min-width: 50px;
+    border-radius: 3px;
+    border: none;
+    outline: none !important;
+    margin-left: 10px;
+}
+.table-title .btn i {
+    float: left;
+    font-size: 21px;
+    margin-right: 5px;
+}
+.table-title .btn span {
+    float: left;
+    margin-top: 2px;
+}
+table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+    padding: 12px 15px;
+    vertical-align: middle;
+    text-align: absolute;
+}
+table.table tr th:first-child {
+    width: 60px;
+}
+table.table tr th:last-child {
+    width: 100px;
+}
+table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fcfcfc;
+}
+table.table-striped.table-hover tbody tr:hover {
+    background: #f5f5f5;
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}	
+table.table td:last-child i {
+    opacity: 0.9;
+    font-size: 22px;
+    margin: 0 5px;
+}
+table.table td a {
+    font-weight: bold;
+    color: #566787;
+    display: inline-block;
+    text-decoration: none;
+    outline: none !important;
+}
+table.table td a:hover {
+    color: #2196F3;
+}
+table.table td a.edit {
+    color: #67967e;
+}
+table.table td i {
+    font-size: 19px;
+}
+table.table .avatar {
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.pagination {
+    float: right;
+    margin: 0 0 5px;
+}
+.pagination li a {
+    border: none;
+    font-size: 13px;
+    min-width: 30px;
+    min-height: 30px;
+    color: #999;
+    margin: 0 2px;
+    line-height: 30px;
+    border-radius: 2px !important;
+    text-align: center;
+    padding: 0 6px;
+}
+.pagination li a:hover {
+    color: #67967e;
+}	
+.pagination li.active a, .pagination li.active a.page-link {
+    background: #16623B;
+}
+.pagination li.active a:hover {        
+    background: #67967e;
+}
+.pagination li.disabled i {
+    color: #ccc;
+}
+.pagination li i {
+    font-size: 16px;
+    padding-top: 6px
+}
+.hint-text {
+    float: left;
+    margin-top: 10px;
+    font-size: 13px;
+}    
+.custom-checkbox {
+    position: relative;
+}
+.custom-checkbox input[type="checkbox"] {    
+    opacity: 0;
+    position: absolute;
+    margin: 5px 0 0 3px;
+    z-index: 9;
+}
+.custom-checkbox label:before{
+    width: 18px;
+    height: 18px;
+}
+.custom-checkbox label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    background: white;
+    border: 1px solid #bbb;
+    border-radius: 2px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+.custom-checkbox input[type="checkbox"]:checked + label:after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid #000;
+    border-width: 0 3px 3px 0;
+    transform: inherit;
+    z-index: 3;
+    transform: rotateZ(45deg);
+}
+.custom-checkbox input[type="checkbox"]:checked + label:before {
+    border-color: #67967e;
+    background: #67967e;
+}
+.custom-checkbox input[type="checkbox"]:checked + label:after {
+    border-color: #fff;
+}
+.custom-checkbox input[type="checkbox"]:disabled + label:before {
+    color: #b8b8b8;
+    cursor: auto;
+    box-shadow: none;
+    background: #ddd;
+}
+.centerCheck {
+    text-align: center;
+    vertical-align: middle;
+}
