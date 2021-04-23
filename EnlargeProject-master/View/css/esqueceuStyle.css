@@ -1,0 +1,144 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16/03/2021, 21:48:17
+    Author     : Lobo
+*/
+
+body,
+html {	
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /*background: black !important;*/
+    background-image: linear-gradient(rgba(246, 247, 249, 0.8), rgba(246, 247, 249, 0.8)), url("images/Background.png");
+}
+
+.user_card {
+    height: 450px;
+    width: 400px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-image: 
+        linear-gradient(217deg, rgba(221,221,221,.8), rgba(255,0,0,0) 120.71%),
+        linear-gradient(127deg, rgba(221,221,221,.8), rgba(255,0,0,0) 20.71%),
+        linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 20.71%),
+        linear-gradient(127deg, rgba(255, 255, 0,.8), rgba(255, 255, 0,0) 70.71%),
+        linear-gradient(336deg, rgba(52, 177, 182,.8), rgba(52, 177, 182,0) 120.71%);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+
+}
+
+.brand_logo_container {
+    position: absolute;
+    height: 111px;
+    width: 214px;
+    top: -25px;
+    border-radius: 5px;
+    background-image: linear-gradient(rgba(22,98,59,0.8), rgba(221,221,221,0.06));
+    padding-top: 4px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.brand_logo {
+    height: 107px;
+    width: 206px;
+    border-radius: 5px;
+    border: 2px;
+}
+
+.brand_logo:hover {
+    height: 107px;
+    width: 206px;
+    border-radius: 5px;
+    border: 2px;
+    opacity: 0.4;
+    -webkit-transition: .5s;
+}
+
+.form_container {
+    margin-top: 80px;
+}
+
+.btn-primary {
+    background-color: rgba(22, 98, 59,0.8) !important;
+    border-color: rgba(22, 98, 59,0) !important;
+    color: ghostwhite;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-primary:hover {
+    background-color: #26a664 !important;
+    border-color: #219157 !important;
+}
+
+.btn-primary:active{
+    background-color: rgba(22, 98, 59,0.8) !important;
+    border-color: rgba(22, 98, 59,0.8) !important;
+}
+
+.btn-primary:focus{
+    background-color: rgba(22, 98, 59,0.8) !important;
+    border-color: rgba(22, 98, 59,0.8) !important;
+    box-shadow: none;
+    outline: 1px;
+}
+
+.login_container {
+    padding: 0 2rem;
+}
+
+.input-group-text {
+    background-color: rgba(22, 98, 59,0.8) !important;
+    color: white !important;
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.fa-envelope {
+    color: ghostwhite;
+}
+.ml-2 {
+    color: #ffff00;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #333300;
+}
+a:hover {
+    color: red;
+    text-shadow: none;
+}
+.fa-key {
+    color: #c0392b;
+}
+.body-text {
+    font-size: 0.9rem;
+    color: white;
+    margin-top: 15px;
+}
+.header-text {
+    color: white;
+    margin-left: 42px;
+    margin-top: 20px;
+}
+.mr-1 {
+    color: #ffff00;
+}
+
+input.transparent-input{
+    color: rgba(0,0,0,0.8);
+    background-color:rgba(255,255,255,0.7) !important;
+    border-color:rgba(255,255,255,0.07) !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}

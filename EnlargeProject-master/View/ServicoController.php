@@ -39,14 +39,11 @@ class ServicoController extends Controller
         $servico->ds_cidade  = $this->request->ds_cidade;
         $servico->nr_idade_minima  = $this->request->nr_idade_minima;
         $servico->nr_idade_maxima  = $this->request->nr_idade_maxima;
-        $servico->nr_dias_semana  = $this->request->nr_dias_semana; 
-         
+        $servico->ds_dias_semana  = $this->request->ds_dias_semana;
         $servico->ds_descricao_servico  = $this->request->ds_descricao_servico;
         $servico->nr_quantidade_loteamento  = $this->request->nr_quantidade_loteamento;
         $servico->nr_valor_unitario  = $this->request->nr_valor_unitario;
         $servico->nr_qt_min_passageiros  = $this->request->nr_qt_min_passageiros;
-        
-        
         $servico->fg_exige_pickup  =  isset($_POST['fg_exige_pickup']) ? 1 : 0;
         $servico->fg_ativo  = isset($_POST['fg_ativo']) ? 1 : 0;
         $servico->fg_privativo  = isset($_POST['fg_privativo']) ? 1 : 0;
@@ -57,8 +54,7 @@ class ServicoController extends Controller
         $dt_janela_viagem_fim1 = str_replace('/', '-', $this->request->dt_janela_viagem_fim);
          $servico->dt_janela_viagem_fim   = date('Y-m-d', strtotime($dt_janela_viagem_fim1));
         
-        $dt_deadline1 = str_replace('/', '-', $this->request->dt_deadline);
-         $servico->dt_deadline = date('Y-m-d', strtotime($dt_deadline1));
+        $servico->nr_deadline = $nr_deadline;
         
         if ($servico->save()) {
             return $this->listar();
@@ -78,7 +74,8 @@ class ServicoController extends Controller
         $servico->ds_cidade  = $this->request->ds_cidade;
         $servico->nr_idade_minima  = $this->request->nr_idade_minima;
         $servico->nr_idade_maxima  = $this->request->nr_idade_maxima;
-        $servico->nr_dias_semana  = $this->request->nr_dias_semana; 
+        $servico->nr_deadline = $this->request->nr_deadline;
+        $servico->ds_dias_semana  = $this->request->ds_dias_semana; 
          
         $servico->ds_descricao_servico  = $this->request->ds_descricao_servico;
         $servico->nr_quantidade_loteamento  = $this->request->nr_quantidade_loteamento;
@@ -96,8 +93,6 @@ class ServicoController extends Controller
         $dt_janela_viagem_fim1 = str_replace('/', '-', $this->request->dt_janela_viagem_fim);
         $servico->dt_janela_viagem_fim   = date('Y-m-d', strtotime($dt_janela_viagem_fim1));
         
-        $dt_deadline1 = str_replace('/', '-', $this->request->dt_deadline);
-        $servico->dt_deadline = date('Y-m-d', strtotime($dt_deadline1));
         
         $servico->save();
 

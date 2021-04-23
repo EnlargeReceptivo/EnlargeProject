@@ -1,11 +1,12 @@
 <?php
 
-/**
- * Classe Servico, nesta classe deve conter todos as acoes que o usuario do sistema deve fazer relacionado a servicos
- * @author Victor Machado Lobo da silva - 06-04-2021
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 
-class Servico {
+class Tarifario {
     
     private $atributos;
 
@@ -33,18 +34,18 @@ class Servico {
     public function save()
     {
         $colunas = $this->preparar($this->atributos);
-        if (!isset($this->id_servico)) {
-            $query = "INSERT INTO tb_servicos (".
+        if (!isset($this->cod_tarifario)) {
+            $query = "INSERT INTO tb_tarifarios (".
                 implode(', ', array_keys($colunas)).
                 ") VALUES (".
                 implode(', ', array_values($colunas)).");";
         } else {
             foreach ($colunas as $key => $value) {
-                if ($key !== 'id_servico') {
+                if ($key !== 'cod_tarifario') {
                     $definir[] = "{$key}={$value}";
                 }
             }
-            $query = "UPDATE tb_servicos SET ".implode(', ', $definir)." WHERE id_servico='{$this->id_servico}';";
+            $query = "UPDATE tb_tarifarios SET ".implode(', ', $definir)." WHERE cod_tarifario='{$this->cod_tarifario}';";
         }
         if ($conexao = Conexao::getInstance()) {
             $stmt = $conexao->prepare($query);
@@ -53,20 +54,6 @@ class Servico {
             }
         }
         return false;
-    }
-    
-    public function cadastrarServico($ds_nome_servico, $dt_criacao_data, $ds_cidade, $nr_idade_minima, $nr_idade_maxima, $dt_janela_viagem_inicio, $dt_janela_viagem_fim, $nr_dias_semana, $dt_deadline, $fg_exige_pickup, $fg_ativo, $ds_descricao_servico, $nr_quantidade_loteamento, $nr_valor_unitario, $nr_qt_min_passageiros, $fg_privativo){
-        $conexao = Conexao::getInstance();
-        
-        $query = "INSERT INTO tb_servicos (ds_nome_servico, dt_criacao_data, ds_cidade, nr_idade_minima, nr_idade_maxima, dt_janela_viagem_inicio, dt_janela_viagem_fim, nr_dias_semana, dt_deadline, fg_exige_pickup, fg_ativo, ds_descricao_servico, nr_quantidade_loteamento, nr_valor_unitario, nr_qt_min_passageiros, fg_privativo) "
-                . "values ('$ds_nome_servico', '$dt_criacao_data', '$ds_cidade', '$nr_idade_minima', '$nr_idade_maxima', '$dt_janela_viagem_inicio', '$dt_janela_viagem_fim', '$nr_dias_semana', '$dt_deadline', '$fg_exige_pickup', '$fg_ativo', '$ds_descricao_servico', '$nr_quantidade_loteamento', '$nr_valor_unitario', '$nr_qt_min_passageiros', '$fg_privativo'); ";
-        echo $query;
-        if ($conexao = Conexao::getInstance()) {
-            $stmt = $conexao->prepare($query);
-            if ($stmt->execute()) {
-                return $stmt->rowCount();
-            }
-        }
     }
 
     /**
@@ -110,10 +97,10 @@ class Servico {
     public static function all()
     {
         $conexao = Conexao::getInstance();
-        $stmt    = $conexao->prepare("SELECT * FROM tb_servicos;");
+        $stmt    = $conexao->prepare("SELECT * FROM tb_tarifarios;");
         $result  = array();
         if ($stmt->execute()) {
-            while ($rs = $stmt->fetchObject(Servico::class)) {
+            while ($rs = $stmt->fetchObject(Tarifario::class)) {
                 $result[] = $rs;
             }
         }
@@ -130,7 +117,7 @@ class Servico {
     public static function count()
     {
         $conexao = Conexao::getInstance();
-        $count   = $conexao->exec("SELECT count(*) FROM tb_servicos;");
+        $count   = $conexao->exec("SELECT count(*) FROM tb_tarifarios;");
         if ($count) {
             return (int) $count;
         }
@@ -138,17 +125,17 @@ class Servico {
     }
 
     /**
-     * Encontra um recurso pelo id_servico
-     * @param type $id_servico
+     * Encontra um recurso pelo cod_tarifario
+     * @param type $cod_tarifario
      * @return type
      */
-    public static function find($id_servico)
+    public static function find($cod_tarifario)
     {
         $conexao = Conexao::getInstance();
-        $stmt    = $conexao->prepare("SELECT * FROM tb_servicos WHERE id_servico='{$id_servico}';");
+        $stmt    = $conexao->prepare("SELECT * FROM tb_tarifarios WHERE cod_tarifario='{$cod_tarifario}';");
         if ($stmt->execute()) {
             if ($stmt->rowCount() > 0) {
-                $resultado = $stmt->fetchObject('Servico');
+                $resultado = $stmt->fetchObject('Tarifario');
                     if ($resultado) {
                         return $resultado;
                     }
@@ -159,13 +146,13 @@ class Servico {
 
     /**
      * Destruir um recurso
-     * @param type $id_servico
+     * @param type $cod_tarifario
      * @return boolean
      */
-    public static function destroy($id_servico)
+    public static function destroy($cod_tarifario)
     {
         $conexao = Conexao::getInstance();
-        if ($conexao->exec("DELETE FROM tb_servicos WHERE id_servico='{$id_servico}';")) {
+        if ($conexao->exec("DELETE FROM tb_tarifarios WHERE cod_tarifario='{$cod_tarifario}';")) {
             return true;
         }
         return false;
