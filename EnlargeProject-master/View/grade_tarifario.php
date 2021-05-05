@@ -25,14 +25,12 @@
 
         <div class="menuprodutos">
             <ul>
-                <li><a href="index.php">Início</a></li>
                 <li><a href="?controller=ServicoController&method=listar">Serviços</a></li>
                 <li><a href="?controller=ReservaController&method=listar">Reservas</a></li>
                 <div class="menupicked">
                     <li><a href="?controller=TarifarioController&method=listar">Tarifários</a></li>
                 </div>
                 <li><a href="?controller=UsuariosController&method=listar">Usuários</a></li>
-                <li><a href="index.php">Relatórios</a></li>
             </ul>
         </div>
     </div>
@@ -71,9 +69,17 @@
                         foreach ($tarifarios as $tarifario) {
                             ?>
                             <tr>
-                                <td class="centerCheck"><?php echo $tarifario->cod_tarifario; ?></td>
+                                <td class="centerCheck">
+                                    <a href="?controller=TarifarioController&method=overview&id=<?php echo $tarifario->cod_tarifario; ?>">
+                                        <div class="controlLink"><?php echo $tarifario->cod_tarifario; ?></div>
+                                    </a>
+                                </td>
                                 <td class="centerCheck"><?php echo $tarifario->id_servico; ?></td>
-                                <td><?php echo $tarifario->nome_tarifario; ?></td>
+                                <td>
+                                    <a href="?controller=ServicoController&method=overview&id=<?php echo $tarifario->id_servico; ?>">
+                                        <div class="controlLink"><?php echo $tarifario->nome_tarifario; ?></div>
+                                    </a>
+                                </td>
                                 <td class="centerCheck"><?php echo $tarifario->data_servico; ?></td>
                                 <td class="centerCheck"><?php echo $tarifario->qtdeAllotment; ?></td>
                                 <td class="centerCheck"><?php echo $tarifario->ativo; ?></td>

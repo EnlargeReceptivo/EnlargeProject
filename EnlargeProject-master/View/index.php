@@ -75,14 +75,10 @@ spl_autoload_register(function($class) {
 
             echo '<div class="menuprodutos">';
             echo '<ul>';
-            echo '<div class="menupicked">';
-            echo '<li><a href="index.php">Início</a></li>';
-            echo '</div>';
             echo '<li><a href="?controller=ServicoController&method=listar">Serviços</a></li>';
             echo '<li><a href="?controller=ReservaController&method=listar">Reservas</a></li>';
             echo '<li><a href="?controller=TarifarioController&method=listar">Tarifários</a></li>';
             echo '<li><a href="?controller=UsuariosController&method=listar">Usuarios</a></li>';
-            echo '<li><a href="index.php">Relatórios</a></li>';
             echo '</ul>';
             echo '</div>';
             echo '</div>';

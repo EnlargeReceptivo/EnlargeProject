@@ -31,7 +31,7 @@ html, body {
 }
 
 .menuInterior{
-    width: 1000px;
+    width: 100%;
     margin: auto;
 }
 
@@ -72,15 +72,15 @@ html, body {
 .menuprodutos{
     margin-top: 0.9%;
     height: 40px;
-    width: 75%;
-    margin-left: 210px;
+    width: 80%;
+    margin-left: 280px;
 }
 
 .menuprodutos ul{
     margin: 0px;
     padding: 0px;
     list-style: none;
-    display:block;
+    display:block;	
 }
 
 .menuprodutos li{
@@ -103,6 +103,7 @@ html, body {
 .menuprodutos li:hover{
     border-radius: 5px;
     background-image: linear-gradient(#67967e, #67967e, #67967e, #67967e, rgba(0, 0, 0, 0.2));
+    background-color: #67967e;
     border-color: #67967e;
     -webkit-transition: .5s;
 }
@@ -124,7 +125,7 @@ html, body {
 }
 
 .brand_logo {
-    position: center;
+    position: relative;
     height: 75px;
     width: 75px;
     border-radius: 50%;
@@ -134,6 +135,7 @@ html, body {
 }
 
 .user_card {
+    position: relative;
     background: ghostwhite;
     position: relative;
     display: flex;
@@ -257,8 +259,8 @@ html, body {
 
 .busca{
     display: inline-block;
-    width: 60%;
-    margin-left: 80px;
+    width: 55%;
+    margin-left: 120px;
 }
 
 .btnLogin {
@@ -271,50 +273,6 @@ html, body {
 .btnLogin img {
     width: 60px;
     height: 60px;
-}
-
-.menuprodutos{
-    margin-top: 0.9%;
-    height: 40px;
-    width: 75%;
-    margin-left: 210px;
-}
-
-.menuprodutos ul{
-    margin: 0px;
-    padding: 0px;
-    list-style: none;
-    display:block;	
-}
-
-.menuprodutos li{
-    height: 30px;
-    float: left;
-    line-height: 30px;
-    padding-left: 8px;
-    padding-right:8px;
-    width: 12%;
-    text-align: center
-}
-
-.menuprodutos li a{
-    text-decoration: none;
-    color: #fff;
-    font-size: 16px;
-    font-family: heveltica;
-}
-
-.menuprodutos li:hover{
-    border-radius: 5px;
-    background-image: linear-gradient(#67967e, #67967e, #67967e, #67967e, rgba(0, 0, 0, 0.2));
-    background-color: #67967e;
-    border-color: #67967e;
-    -webkit-transition: .5s;
-}
-
-.menuprodutos li:hover a{
-    color: ghostwhite;
-    font-weight: bold;
 }
 
 .brand_logo_container {

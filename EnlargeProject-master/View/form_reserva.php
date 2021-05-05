@@ -25,14 +25,12 @@
 
         <div class="menuprodutos">
             <ul>
-                <li><a href="index.php">Início</a></li>
                 <li><a href="?controller=ServicoController&method=listar">Serviços</a></li>
                 <div class="menupicked">
                     <li><a href="?controller=ReservaController&method=listar">Reservas</a></li>
                 </div>
                 <li><a href="?controller=TarifarioController&method=listar">Tarifários</a></li>
                 <li><a href="?controller=UsuariosController&method=listar">Usuários</a></li>
-                <li><a href="index.php">Relatórios</a></li>
             </ul>
         </div>
     </div>
@@ -91,7 +89,7 @@
                                         echo isset($reserva->data_servico) ? $reserva->data_servico : null;
                                         ?>" placeholder="Data Serviço">
                                     </div>
-                                    
+
                                     <div class="input-group mb-3">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="material-icons">person</i></span>
@@ -100,7 +98,7 @@
                                         echo isset($reserva->nome_titular) ? $reserva->nome_titular : null;
                                         ?>" placeholder="Nome do Titular">
                                     </div>
-                                    
+
                                     <div class="input-group mb-3">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="material-icons">elderly</i></span>
@@ -119,7 +117,7 @@
                                         echo isset($reserva->qtde_pax) ? $reserva->qtde_pax : null;
                                         ?>" placeholder="Qtde. Pax">
                                     </div>
-                                    
+
                                     <div class="input-group mb-3">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="material-icons">flight</i></span>
@@ -128,14 +126,14 @@
                                         echo isset($reserva->info_voo_htl) ? $reserva->info_voo_htl : null;
                                         ?>" placeholder="Info Voo/Htl">
                                     </div>
-                                    
+
                                     <div class="input-group mb-3">
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="material-icons">flag</i></span>
                                         </div>
-                                        <input type="text" name="status_reserva" id="status_reserva" class="form-control" value="<?php
-                                        echo isset($reserva->status_reserva) ? $reserva->status_reserva : null;
-                                        ?>" placeholder="Status Reserva">
+                                        <input type="text" name="status_reserva" id="status_reserva" class="form-control" onblur="validar(this);" value="<?php
+                                               echo isset($reserva->status_reserva) ? $reserva->status_reserva : null;
+                                               ?>" placeholder="Status Reserva">
                                     </div>                                    
                                 </div>
                                 </form>
@@ -147,3 +145,23 @@
         </div>
     </div>        
 </div>
+
+<script lang="javascript">
+    function statusReserva(status_reserva) {
+        if (status_reserva !== 'Confirmada' && 
+            status_reserva !== 'Cancelada' && 
+            status_reserva !== 'CONFIRMADA' &&
+            status_reserva !== 'CANCELADA' &&
+            status_reserva !== 'confirmada' &&
+            status_reserva !== 'cancelada')
+            return false;
+        return true;
+    }
+
+    function validar(el) {
+        if (!statusReserva(el.value)) {
+            alert("As reservas só podem assumir o Status 'Confirmada' ou 'Cancelada'! " + el.value.toUpperCase());
+            el.value = "";
+        }
+    }
+</script>

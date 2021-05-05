@@ -26,14 +26,12 @@
         <div class="menuprodutos">
             <ul>
                 <ul>
-                    <li><a href="index.php">Início</a></li>
                     <div class="menupicked">
                         <li><a href="?controller=ServicoController&method=listar">Serviços</a></li>
                     </div>
                     <li><a href="?controller=ReservaController&method=listar">Reservas</a></li>
                     <li><a href="?controller=TarifarioController&method=listar">Tarifários</a></li>
                     <li><a href="?controller=UsuariosController&method=listar">Usuários</a></li>
-                    <li><a href="index.php">Relatórios</a></li>
                 </ul>
         </div>
     </div>
@@ -60,16 +58,16 @@
                 <thead>
                     <tr>
                         <th class="centerCheck">Cód</th>
-                        <th>Título</th>
-                        <th>Cidade</th>
-                        <th class="centerCheck">TW Início</th>
-                        <th class="centerCheck">TW Fim</th>
-                        <th class="centerCheck">Pickup?</th>
-                        <th class="centerCheck">Deadline (dias)</th>
-                        <th class="centerCheck">Preço (R$)</th>
-                        <th class="centerCheck">Ativo?</th>
-                        <th class="centerCheck">Ação</th>
-                    </tr>
+                <a><th>Título</th></a>
+                <th>Cidade</th>
+                <th class="centerCheck">TW Início</th>
+                <th class="centerCheck">TW Fim</th>
+                <th class="centerCheck">Pickup?</th>
+                <th class="centerCheck">Deadline (dias)</th>
+                <th class="centerCheck">Preço (R$)</th>
+                <th class="centerCheck">Ativo?</th>
+                <th class="centerCheck">Ação</th>
+                </tr>
                 </thead>
                 <tbody>
                     <?php
@@ -77,8 +75,16 @@
                         foreach ($servicos as $servico) {
                             ?>
                             <tr>
-                                <td class="centerCheck"><?php echo $servico->id_servico; ?></td>
-                                <td><?php echo $servico->ds_nome_servico; ?></td>
+                                <td class="centerCheck">
+                                    <a href="?controller=ServicoController&method=overview&id=<?php echo $servico->id_servico; ?>">
+                                        <div class="controlLink"><?php echo $servico->id_servico; ?></div>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="?controller=ServicoController&method=overview&id=<?php echo $servico->id_servico; ?>">
+                                        <div class="controlLink"><?php echo $servico->ds_nome_servico; ?></div>
+                                    </a>
+                                </td>
                                 <td><?php echo $servico->ds_cidade; ?></td>
                                 <td  class="centerCheck"><?php
                                     $dt_janela_viagem_inicio1 = str_replace('-', '/', $servico->dt_janela_viagem_inicio);

@@ -25,14 +25,12 @@
 
         <div class="menuprodutos">
             <ul>
-                <li><a href="index.php">Início</a></li>
                 <div class="menupicked">
                     <li><a href="?controller=ServicoController&method=listar">Serviços</a></li>
                 </div>
                 <li><a href="?controller=ReservaController&method=listar">Reservas</a></li>
                 <li><a href="?controller=TarifarioController&method=listar">Tarifários</a></li>
                 <li><a href="?controller=UsuariosController&method=listar">Usuários</a></li>
-                <li><a href="index.php">Relatórios</a></li>
             </ul>
         </div>
     </div>

@@ -30,6 +30,16 @@ class ReservaController extends Controller
 
         return $this->view('form_reserva', ['reserva' => $reserva]);
     }
+    
+    /*Traz o overview da reserva*/
+    public function overview($dado)
+    {
+        $id      = (int) $dado['id'];
+        $reserva = Reserva::find($id);
+
+        return $this->view('overview_reserva', ['reserva' => $reserva]);
+    }
+
 
     /**
      * Salvar o contato submetido pelo formulário (NAO SERA UTILIZADO POR HORA)

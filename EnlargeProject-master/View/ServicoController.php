@@ -11,6 +11,16 @@ class ServicoController extends Controller
  
         return $this->view('grade_servico', ['servicos' => $servicos]);
     }
+    
+    /*Traz o overview do registro*/
+    public function overview($dado){       
+        $id      = (int) $dado['id'];
+        $servico = Servico::find($id);
+
+        return $this->view('overview_servico', ['servico' => $servico]);
+     }
+    
+    
     /* Mostrar formulario para criar um novo servico*/
     public function criar()
     {

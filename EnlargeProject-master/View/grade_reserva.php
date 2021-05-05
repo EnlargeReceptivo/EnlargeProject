@@ -25,14 +25,12 @@
 
         <div class="menuprodutos">
             <ul>
-                <li><a href="index.php">Início</a></li>
                 <li><a href="?controller=ServicoController&method=listar">Serviços</a></li>
                 <div class="menupicked">
                     <li><a href="?controller=ReservaController&method=listar">Reservas</a></li>
                 </div>
                 <li><a href="?controller=TarifarioController&method=listar">Tarifários</a></li>
                 <li><a href="?controller=UsuariosController&method=listar">Usuários</a></li>
-                <li><a href="index.php">Relatórios</a></li>
             </ul>
         </div>
     </div>
@@ -75,13 +73,25 @@
                         foreach ($reservas as $reserva) {
                             ?>
                             <tr>
-                                <td class="centerCheck"><?php echo $reserva->num_reserva; ?></td>
-                                <td class="centerCheck"><?php echo $reserva->cod_tarifario; ?></td>
+                                <td class="centerCheck">
+                                    <a href="?controller=ReservaController&method=overview&id=<?php echo $reserva->num_reserva; ?>">
+                                        <div class="controlLink"><?php echo $reserva->num_reserva; ?></div>
+                                    </a>
+                                </td>
+                                <td class="centerCheck">
+                                    <a href="?controller=TarifarioController&method=overview&id=<?php echo $reserva->cod_tarifario; ?>">
+                                        <div class="controlLink"><?php echo $reserva->cod_tarifario; ?></div>
+                                    </a>
+                                </td>
                                 <td>
                                     <?php /* PENSAR AQUI EM COMO VAMOS POPULAR O NOME DO SERVIÇO
                                       echo $reserva->ds_nome_servico; */ ?>
                                 </td>
-                                <td><?php echo $reserva->nome_titular; ?></td>
+                                <td>
+                                    <a href="?controller=ReservaController&method=overview&id=<?php echo $reserva->num_reserva; ?>">
+                                        <div class="controlLink"><?php echo $reserva->nome_titular; ?></div>
+                                    </a>
+                                </td>
                                 <td class="centerCheck"><?php echo $reserva->qtde_pax; ?></td>
                                 <td class="centerCheck"><?php echo $reserva->data_servico; ?></td>
                                 <td class="centerCheck"><?php echo $reserva->info_voo_htl; ?></td>
