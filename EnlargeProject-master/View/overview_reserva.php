@@ -84,9 +84,9 @@
                                             echo isset($reserva->data_servico) ? $reserva->data_servico : null;
                                             ?>
                                         </p>
-                                        <p class="card-text text-left">Horário: [CRIAR CAMPO] 
+                                        <p class="card-text text-left">Horário: 
                                             <?php
-                                            echo '!';
+                                            echo isset($reserva->horario) ? $reserva->horario : null;
                                             ?>
                                         </p>
                                         <p class="card-text text-left">Nome Titular: 
