@@ -84,8 +84,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <?php /* PENSAR AQUI EM COMO VAMOS POPULAR O NOME DO SERVIÇO
-                                      echo $reserva->ds_nome_servico; */ ?>
+                                    <?php echo $reserva->nome_servico; ?>
                                 </td>
                                 <td>
                                     <a href="?controller=ReservaController&method=overview&id=<?php echo $reserva->num_reserva; ?>">

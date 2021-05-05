@@ -85,7 +85,7 @@
                                         <div class="input-group-append">
                                             <span class="input-group-text"><i class="material-icons">&#xe614;</i></span>
                                         </div>
-                                        <input type="date" name="data_servico" id="data_servico" class="form-control" value="<?php
+                                        <input type="text" name="data_servico" id="data_servico" class="form-control" value="<?php
                                         echo isset($reserva->data_servico) ? $reserva->data_servico : null;
                                         ?>" placeholder="Data Serviço">
                                     </div>
