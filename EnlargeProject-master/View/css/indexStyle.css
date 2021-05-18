@@ -96,8 +96,8 @@ html, body {
 .menuprodutos li a{
     text-decoration: none;
     color: #fff;
-    font-size: 16px;
-    font-family: heveltica;
+    font-size: 14px;
+    letter-spacing: .1rem;
 }
 
 .menuprodutos li:hover{
@@ -110,7 +110,6 @@ html, body {
 
 .menuprodutos li:hover a{
     color: ghostwhite;
-    font-weight: bold;
 }
 
 .brand_logo_container {
@@ -172,7 +171,6 @@ html, body {
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     color: ghostwhite;
-    font-weight: bold;
 }
 
 .menupicked li:hover {
