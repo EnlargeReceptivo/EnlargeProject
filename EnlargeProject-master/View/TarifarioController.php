@@ -34,9 +34,25 @@ class TarifarioController extends Controller {
 
         return $this->view('form_tarifario', ['tarifario' => $tarifario]);
     }
+    
+    public function inativar($dados){
+        $id = (int) $dados['id'];
+        $tarifario = Tarifario::find($id);
+        
+        if ($tarifario != null) {
+            $con = mysqli_connect("localhost", "root", "", "enlargebd");   
+            mysqli_query($con, "UPDATE tb_tarifarios SET ativo = FALSE WHERE cod_tarifario = $tarifario->cod_tarifario");
+        }
+        
+        /*
+         * GABIII AQUI SERIA ONDE O NOSSO SISTEMA PODE FAZER O CONSUMO DA API 
+         */
+        
+        return $this->view('overview_tarifario', ['tarifario' => $tarifario]);
+    }
 
     /**
-     * Salvar o contato submetido pelo formulário (NAO SERA UTILIZADO POR HORA)
+     * Salvar o tarifário submetido pelo formulário (NAO SERA UTILIZADO)
 
       public function salvar()
       {

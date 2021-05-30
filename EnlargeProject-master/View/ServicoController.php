@@ -51,6 +51,7 @@ class ServicoController extends Controller {
         $servico->nr_quantidade_loteamento = $this->request->nr_quantidade_loteamento;
         $servico->nr_valor_unitario = $this->request->nr_valor_unitario;
         $servico->nr_qt_min_passageiros = $this->request->nr_qt_min_passageiros;
+        $servico->nr_deadline = $this->request->nr_deadline;
         $servico->fg_exige_pickup = isset($_POST['fg_exige_pickup']) ? 1 : 0;
         $servico->fg_ativo = isset($_POST['fg_ativo']) ? 1 : 0;
         $servico->fg_privativo = isset($_POST['fg_privativo']) ? 1 : 0;
@@ -60,8 +61,6 @@ class ServicoController extends Controller {
 
         $dt_janela_viagem_fim1 = str_replace('/', '-', $this->request->dt_janela_viagem_fim);
         $servico->dt_janela_viagem_fim = date('Y-m-d', strtotime($dt_janela_viagem_fim1));
-
-        $servico->nr_deadline = $nr_deadline;
 
         if ($servico->save()) {
             $con = mysqli_connect("localhost", "root", "", "enlargebd");

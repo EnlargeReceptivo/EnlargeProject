@@ -106,7 +106,7 @@
                                                 <input type="checkbox" id="checkbox2" disabled>
                                                 <label for="checkbox2">
                                                     <?php
-                                                    echo isset($tarifario->ativo) ? $tarifario->ativo : null;
+                                                        echo isset($tarifario->ativo) ? $tarifario->ativo : null;
                                                     ?>
                                                 </label>
                                             </span>
@@ -118,7 +118,8 @@
                                                 <label for="checkbox1"></label>
                                             </span>
                                         </p>
-                                        <a href="#" class="btn btn-danger">Inativar</a>
+
+                                        <a href="?controller=TarifarioController&method=inativar&id=<?php echo $tarifario->cod_tarifario ?>" class="btn btn-danger"onClick="setTimeout()">Inativar</a>
                                     </div>
                                 </div>
 
@@ -149,3 +150,11 @@
 </div>
 </body>
 </html>
+
+<script lang="Javascript">
+    if (document.referrer !== document.location.href) {
+        setTimeout(function () {
+            document.location.reload()
+        }, 200);
+    }
+</script>

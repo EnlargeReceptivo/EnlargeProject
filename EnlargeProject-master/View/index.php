@@ -93,7 +93,6 @@ spl_autoload_register(function($class) {
             echo '</div>';
             echo '</div>';
             echo '</div>';
-            //echo '<a href="?controller=UsuariosController&method=listar" class="btn btn-success">Vamos Começar!</a></div>';
             echo '</div>';
         }
         ?>

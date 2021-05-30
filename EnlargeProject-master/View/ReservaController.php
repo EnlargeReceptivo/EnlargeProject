@@ -13,11 +13,15 @@ class ReservaController extends Controller
     }
     
     /* Mostrar formulario para criar uma nova reserva*/
-    /* NAO SERA UTILIZADO POR ENQUANTO
     public function criar()
     {
         return $this->view('form_reserva');
-    }*/
+    }
+    
+    public function store(Request $request)
+    {
+        return response()->json(Reserva::create(['nome_titular' => $request->nome_titular]));
+    }
 
     /**
      * Mostrar formulário para editar um contato
