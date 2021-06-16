@@ -354,6 +354,72 @@ html, body {
     border-radius: 3px;
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
+
+.table-wrapper-scroll-y {
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    min-width: 100px;
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+th     { background:#eee; }
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 400px;
+    overflow: auto;
+}
+
+.table-scroll tbody {
+    vertical-align: middle;
+    height: 250px;
+    overflow: auto;
+
+    display: block;
+    min-width: 100px;
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.table-scroll tr {
+    width: 100%;
+    text-align: left;
+    vertical-align: middle;
+    table-layout: fixed;
+    display: inline-table;
+
+    min-width: 100px;
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.table-scroll thead > tr > th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table-scroll tr > th > td{
+    width: 100%;
+    text-align: left;
+    vertical-align: middle;
+    table-layout: fixed;
+    display: inline-table;
+
+    min-width: 100px;
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
 .table-title {        
     padding-bottom: 15px;
     background: #67967e;

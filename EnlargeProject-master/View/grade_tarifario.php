@@ -39,16 +39,16 @@
 
 <div class="container">
     <div class="table-responsive">
-        <div class="table-wrapper">
+        <div class="table-wrapper my-custom-scrollbar">
             <div class="table-title">
                 <div class="row">   
                     <div class="col-md-6">
                         <h2 class="table-subtitle">Gerenciar <b>Tarifários</b></h2>
                     </div>
-                    <div class="col-md-6 text-right"> 
+                    <!--<div class="col-md-6 text-right"> 
                         <a href="#" class="btn btn-warning"><i class="	material-icons">&#xe3c9;</i> 
                             <span>Editar Tarifário</span></a>							
-                    </div>
+                    </div>-->
                 </div>
             </div>
             <table class="table table-striped table-hover">
@@ -56,36 +56,61 @@
                     <tr>
                         <th class="centerCheck">Cód</th>
                         <th class="centerCheck">Cód Serviço</th>
-                        <th>Título</th>
+                        <th>Tarifário</th>
                         <th class="centerCheck">Data Serviço</th>
                         <th class="centerCheck">Qtde. Allotment</th>
                         <th class="centerCheck">Ativo?</th>
-                        <th class="centerCheck">Ação</th>
+                        <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
+                    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+                    date_default_timezone_set('America/Sao_Paulo');
                     if ($tarifarios) {
                         foreach ($tarifarios as $tarifario) {
                             ?>
                             <tr>
-                                <td class="centerCheck">
+                                <td>
                                     <a href="?controller=TarifarioController&method=overview&id=<?php echo $tarifario->cod_tarifario; ?>">
                                         <div class="controlLink"><?php echo $tarifario->cod_tarifario; ?></div>
                                     </a>
                                 </td>
-                                <td class="centerCheck"><?php echo $tarifario->id_servico; ?></td>
-                                <td>
+                                <td class="centerCheck">
                                     <a href="?controller=ServicoController&method=overview&id=<?php echo $tarifario->id_servico; ?>">
-                                        <div class="controlLink"><?php echo $tarifario->nome_tarifario; ?></div>
+                                        <div class="controlLink"><?php echo $tarifario->id_servico; ?></div>
                                     </a>
                                 </td>
-                                <td class="centerCheck"><?php echo $tarifario->data_servico; ?></td>
-                                <td class="centerCheck"><?php echo $tarifario->qtdeAllotment; ?></td>
-                                <td class="centerCheck"><?php echo $tarifario->ativo; ?></td>
+                                <td>
+                                    <a href="?controller=TarifarioController&method=overview&id=<?php echo $tarifario->cod_tarifario; ?>">
+                                        <div class="controlLink"><?php echo $tarifario->nome_tarifario; ?></div>
+                                    </a>
+                                </td>                                
+                                <td class="centerCheck"><?php
+                                    $dtServ = str_replace('-', '/', $tarifario->data_servico);
+                                    echo strftime('%d/%b/%y', strtotime($dtServ));
+                                    ?>
+                                </td>
+
+                                <td class="centerCheck"><?php echo $tarifario->qtdeAllotment; ?></td>                                
                                 <td class="centerCheck">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" disabled 
+                                        <?php
+                                        if (isset($tarifario->ativo)) {
+                                            if ($tarifario->ativo == 1) {
+                                                echo 'checked';
+                                            } else {
+                                                echo'unchecked';
+                                            }
+                                        }
+                                        ?>>
+                                        <label class="form-check-label" for="flexCheckDisabled"></label>
+                                    </div>
+                                </td>
+
+                                <td>
                                     <a href="?controller=TarifarioController&method=editar&id=<?php echo $tarifario->cod_tarifario; ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                    <a href="?controller=TarifarioController&method=excluir&id=<?php echo $tarifario->cod_tarifario; ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Excluir">delete</i></a>
                                 </td>
                             </tr>
                             <?php

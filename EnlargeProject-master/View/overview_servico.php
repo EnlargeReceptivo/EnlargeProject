@@ -45,6 +45,8 @@
                     <div class="col-md-6">
                         <h2 class="table-subtitle">
                             <?php
+                            setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+                            date_default_timezone_set('America/Sao_Paulo');
                             echo isset($servico->ds_nome_servico) ? $servico->ds_nome_servico : null;
                             ?>
                         </h2>
@@ -61,169 +63,198 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="d-flex justify-content-center h-100">
-                <div class="user_card">
-                    <div class="well text-center">
+    <div class="user_card">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-left" style="margin-bottom: -10px;"><p class="centerCheck">Código do Serviço: 
+                                <?php
+                                echo isset($servico->id_servico) ? $servico->id_servico : null;
+                                ?></p>
+                        </h5></br></br>
+                        <p class="card-text text-left">Cidade: 
+                            <?php
+                            echo isset($servico->ds_cidade) ? $servico->ds_cidade : null;
+                            ?>
+                        </p>
+                        <p class="card-text text-left">Dias da Semana: 
+                            <?php
+                            echo isset($servico->ds_dias_semana) ? $servico->ds_dias_semana : null;
+                            ?>
+                        </p>
+                        <p class="card-text text-left">Idade Mínima: 
+                            <?php
+                            echo isset($servico->nr_idade_minima) ? $servico->nr_idade_minima : null;
+                            ?>
+                        </p>
+                        <p class="card-text text-left">Idade Máxima: 
+                            <?php
+                            echo isset($servico->nr_idade_maxima) ? $servico->nr_idade_maxima : null;
+                            ?>
+                        </p>
+                        <p class="card-text text-left text-danger">Deadline (dias): 
+                            <?php
+                            echo isset($servico->nr_deadline) ? $servico->nr_deadline : null;
+                            ?>                                        
+                        </p>
+                        <p class="card-text text-left">Quantidade Mínima Passageiros: 
+                            <?php
+                            echo isset($servico->nr_qt_min_passageiros) ? $servico->nr_qt_min_passageiros : null;
+                            ?> 
+                        </p>
+                        <p class="card-text text-left">Quantidade Allotment: 
+                            <?php
+                            echo isset($servico->nr_quantidade_loteamento) ? $servico->nr_quantidade_loteamento : null;
+                            ?> 
+                        </p>
+                        <p class="card-text text-left">Criado por: 
+                            <?php
+                            echo isset($servico->criado_por) ? $servico->criado_por : null;
+                            ?> 
+                        </p>
+                        <p class="card-text text-left" style="margin-bottom: 20.25%;"><!--Data de criação: -->
+                            <?php
+                            //echo isset($servico->dt_criacao_data) ? $servico->dt_criacao_data : null;
+                            ?> 
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-left">Descrição</h5>
+                        <p class="card-text text-left">
+                            <?php
+                            echo isset($servico->ds_descricao_servico) ? $servico->ds_descricao_servico : null;
+                            ?>                                            
+                        </p></br>
+                        <p class="card-text text-left">Preço por Pax: </br>R$ 
+                            <?php
+                            echo isset($servico->nr_valor_unitario) ? $servico->nr_valor_unitario : null;
+                            ?>  
+                        </p>
+                        <p class="card-text text-left">Travel Window Início: </br>
+                            <?php
+                            $dt_janela_viagem_inicio1 = $servico->dt_janela_viagem_inicio;
+                            echo strftime('%d/%b/%y', strtotime($dt_janela_viagem_inicio1));
+                            ?> 
+                        </p>
+                        <p class="card-text text-left">Travel Window Fim: </br>
+                            <?php
+                            $dt_janela_viagem_fim1 = $servico->dt_janela_viagem_fim;
+                            echo strftime('%d/%b/%y', strtotime($dt_janela_viagem_fim1));
+                            ?> 
+                        </p></br></br></br>
+                        <p class="card-text text-left"><strong>Informações Úteis</strong></p>
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="card" style="width: 145%; height: 100%;">
-                                    <img src="css/images/imagem_padrao.png" class="card-img-top" alt="Responsive image">
-                                    <div class="clearfix">
-                                        <ul class="pagination">
-                                            <li class="page-item disabled"><a href="#">Anterior</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                            <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                            <li class="page-item"><a href="#" class="page-link">Próximo</a></li>
-                                        </ul>
-                                    </div></br>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Código: 
-                                            <?php
-                                            echo isset($servico->id_servico) ? $servico->id_servico : null;
-                                            ?>
-                                        </h5></br>
-                                        <p class="card-text text-left">Cidade: 
-                                            <?php
-                                            echo isset($servico->ds_cidade) ? $servico->ds_cidade : null;
-                                            ?>
-                                        </p>
-                                        <p class="card-text text-left">Dias da Semana: 
-                                            <?php
-                                            echo isset($servico->ds_dias_semana) ? $servico->ds_dias_semana : null;
-                                            ?>
-                                        </p>
-                                        <p class="card-text text-left">Idade Mínima: 
-                                            <?php
-                                            echo isset($servico->nr_idade_minima) ? $servico->nr_idade_minima : null;
-                                            ?>
-                                        </p>
-                                        <p class="card-text text-left">Idade Máxima: 
-                                            <?php
-                                            echo isset($servico->nr_idade_maxima) ? $servico->nr_idade_maxima : null;
-                                            ?>
-                                        </p>
-                                        <p class="card-text text-left text-danger">Deadline (dias): 
-                                            <?php
-                                            echo isset($servico->nr_deadline) ? $servico->nr_deadline : null;
-                                            ?>                                        
-                                        </p>
-                                        <p class="card-text text-left">Quantidade Allotment: 
-                                            <?php
-                                            echo isset($servico->nr_quantidade_loteamento) ? $servico->nr_quantidade_loteamento : null;
-                                            ?> 
-                                        </p>
-                                        <p class="card-text text-left">Criado por: 
-                                            <?php
-                                            echo isset($servico->criado_por) ? $servico->criado_por : null;
-                                            ?> 
-                                        </p>
-                                        <p class="card-text text-left">Data de criação: 
-                                            <?php
-                                            echo isset($servico->dt_criacao_data) ? $servico->dt_criacao_data : null;
-                                            ?> 
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                            <p class="card-text ml-3">Pickup? 
+                                <span class="custom-checkbox">
+                                    <input type="checkbox" id="checkbox3" disabled
+                                    <?php
+                                    if (isset($servico->fg_exige_pickup)) {
+                                        if ($servico->fg_exige_pickup == 1) {
+                                            echo 'checked';
+                                        } else {
+                                            echo'unchecked';
+                                        }
+                                    }
+                                    ?>>
+                                    <label for="checkbox3"></label>
+                                </span>
+                            </p>
 
-                            <div class="col-md-6">
-                                <div class="card" style="width: 60%; float: right">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-left">Descrição</h5>
-                                        <p class="card-text text-left">
-                                            <?php
-                                            echo isset($servico->ds_descricao_servico) ? $servico->ds_descricao_servico : null;
-                                            ?>                                            
-                                        </p></br></br>
-                                        <p class="card-text text-left">Preço por Pax: </br>R$ 
-                                            <?php
-                                            echo isset($servico->nr_valor_unitario) ? $servico->nr_valor_unitario : null;
-                                            ?>  
-                                        </p>
-                                        <p class="card-text text-left">Travel Window Início: </br>
-                                            <?php
-                                            echo isset($servico->dt_janela_viagem_inicio) ? $servico->dt_janela_viagem_inicio : null;
-                                            ?> 
-                                        </p>
-                                        <p class="card-text text-left">Travel Window Fim: </br>
-                                            <?php
-                                            echo isset($servico->dt_janela_viagem_fim) ? $servico->dt_janela_viagem_fim : null;
-                                            ?> 
-                                        </p></br>
-                                        <p class="card-text">Informações Úteis</p>
-                                        <p class="card-text text-left">Pickup? 
-                                            <span class="custom-checkbox">
-                                                <input type="checkbox" id="checkbox3" checked disabled>
-                                                <label for="checkbox3"></label>
-                                            </span>
-                                        </p>
-
-                                        <p class="card-text text-left">Ativo? 
-                                            <span class="custom-checkbox">
-                                                <input type="checkbox" id="checkbox2" unchecked disabled>
-                                                <label for="checkbox2"></label>
-                                            </span>
-                                        </p>
-
-                                        <p class="card-text text-left">Privativo? 
-                                            <span class="custom-checkbox">
-                                                <input type="checkbox" id="checkbox1" checked disabled>
-                                                <label for="checkbox1"></label>
-                                            </span>
-                                        </p>
-                                        <a href="#" class="btn btn-danger">Inativar</a>
-                                    </div>
-                                </div>
-
-                                <div class="card" style="width: 60%; height: responsive; float: right">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-left">Tarifários</h5>
-                                        <div class="table-responsive">
-                                            <table class="table table-striped table-hover">
-                                                <div class="row">
-                                                    <thead>
-                                                    <tbody>
-                                                    <th>Código</th>
-                                                    <th>Tarifário</th>
-                                                    <?php
-                                                    $con = mysqli_connect("localhost", "root", "", "enlargebd");
-                                                    $result = mysqli_query($con, "SELECT cod_tarifario, nome_tarifario FROM tb_tarifarios WHERE id_servico = $servico->id_servico");
-                                                    while ($row = mysqli_fetch_array($result)) {
-                                                        ?>
-                                                        <tr>
-                                                            <td class="centerCheck">
-                                                                <a href="?controller=TarifarioController&method=overview&id=<?php echo $row['cod_tarifario']; ?>">
-                                                                    <div class="controlLink"><?php echo $row['cod_tarifario']; ?></div>
-                                                                </a>
-                                                            </td>
-                                                            <td>
-                                                                <a href="?controller=TarifarioController&method=overview&id=<?php echo $row['cod_tarifario']; ?>">
-                                                                    <div class="controlLink"><?php echo $row['nome_tarifario']; ?></div>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                        <?php
-                                                    }
-                                                    mysqli_close($con);
-                                                    ?> 
-                                                    </tbody>
-                                                    </thead>
-                                                </div>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <p class="card-text ml-2">Privativo? 
+                                <span class="custom-checkbox">
+                                    <input type="checkbox" id="checkbox1" disabled 
+                                    <?php
+                                    if (isset($servico->fg_privativo)) {
+                                        if ($servico->fg_privativo == 1) {
+                                            echo 'checked';
+                                        } else {
+                                            echo'unchecked';
+                                        }
+                                    }
+                                    ?>
+                                           >
+                                    <label for="checkbox1"></label>
+                                </span>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div><!-- tem 2 -->
+        <!-- <div class="col-6"> -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title text-left">Tarifários</h5>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <div class="row">
+                            <thead>
+                            <tbody>
+                            <th>Código</th>
+                            <th>Tarifário</th>
+                            <th class="centerCheck">Qtde Allotment</th>
+                            <th class="centerCheck">Ativo?</th>
+                            <?php
+                            $con = mysqli_connect("localhost", "root", "", "enlargebd");
+                            $result = mysqli_query($con, "SELECT cod_tarifario, nome_tarifario, qtdeAllotment, ativo FROM tb_tarifarios WHERE id_servico = $servico->id_servico");
+                            while ($row = mysqli_fetch_array($result)) {
+                                ?>
+                                <tr>
+                                    <td class="centerCheck">
+                                        <a href="?controller=TarifarioController&method=overview&id=<?php echo $row['cod_tarifario']; ?>">
+                                            <div class="controlLink"><?php echo $row['cod_tarifario']; ?></div>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="?controller=TarifarioController&method=overview&id=<?php echo $row['cod_tarifario']; ?>">
+                                            <div class="controlLink"><?php echo $row['nome_tarifario']; ?></div>
+                                        </a>
+                                    </td>
+                                    <td class="centerCheck">
+                                        <a>
+                                            <div class="controlLink"><?php echo $row['qtdeAllotment']; ?></div>
+                                        </a>
+                                    </td>
+                                    <td class="centerCheck">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" disabled 
+                                            <?php
+                                            if (isset($row['ativo'])) {
+                                                if ($row['ativo'] == 1) {
+                                                    echo 'checked';
+                                                } else {
+                                                    echo'unchecked';
+                                                }
+                                            }
+                                            ?>>
+                                            <label class="form-check-label" for="flexCheckDisabled"></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            mysqli_close($con);
+                            ?> 
+                            </tbody>
+                            </thead>
+                        </div>
+                </div>
+                </table>
+                <!-- </div> -->
+            </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 </body>
 </html>

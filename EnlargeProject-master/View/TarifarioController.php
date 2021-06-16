@@ -12,9 +12,10 @@ class TarifarioController extends Controller {
     }
 
     /* Traz o overview do registro */
+
     public function overview($dado) {
-        $id         = (int) $dado['id'];
-        $tarifario  = Tarifario::find($id);
+        $id = (int) $dado['id'];
+        $tarifario = Tarifario::find($id);
 
         return $this->view('overview_tarifario', ['tarifario' => $tarifario]);
     }
@@ -34,21 +35,66 @@ class TarifarioController extends Controller {
 
         return $this->view('form_tarifario', ['tarifario' => $tarifario]);
     }
-    
-    public function inativar($dados){
+
+    public function inativar($dados) {
         $id = (int) $dados['id'];
         $tarifario = Tarifario::find($id);
-        
-        if ($tarifario != null) {
-            $con = mysqli_connect("localhost", "root", "", "enlargebd");   
+
+        if ($tarifario) {
+            $con = mysqli_connect("localhost", "root", "", "enlargebd");
             mysqli_query($con, "UPDATE tb_tarifarios SET ativo = FALSE WHERE cod_tarifario = $tarifario->cod_tarifario");
         }
-        
+
         /*
-         * GABIII AQUI SERIA ONDE O NOSSO SISTEMA PODE FAZER O CONSUMO DA API 
+         * Array API
          */
+        $data_array = array(
+            'id' => $tarifario->cod_tarifario,
+            'id_servico' => $tarifario->id_servico,
+            'ativo' => 'false',
+            'data' => $tarifario->data_servico
+        );
+
+        $this->pullAPI('PUT', 'https://my-json-server.typicode.com/EnlargeReceptivo/fake_api_teste/reservas/' . $tarifario->cod_tarifario, json_encode($data_array));
         
         return $this->view('overview_tarifario', ['tarifario' => $tarifario]);
+    }
+
+    public function pullAPI($param1, $uri, $data) {
+        $curl = curl_init();
+        switch ($param1) {
+            case "POST":
+                curl_setopt($curl, CURLOPT_POST, 1);
+                if ($data)
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                break;
+            case "PUT":
+                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+                if ($data)
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                break;
+            default:
+                if ($data)
+                    $uri = sprintf("%s?%s", $uri, http_build_query($data));
+        }
+
+        // OPTIONS:
+        curl_setopt($curl, CURLOPT_URL, $uri);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+            'APIKEY: 111111111111111111111',
+            'Content-Type: application/json',
+        ));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        
+        // EXECUTE:
+        $result = curl_exec($curl);
+        if (!$result) {
+            die("Connection Failure");
+        }
+        curl_close($curl);
+        //var_dump($uri);exit;
+        return $result;
     }
 
     /**
@@ -76,9 +122,9 @@ class TarifarioController extends Controller {
         $tarifario = Tarifario::find($id);
 
         $tarifario->nome_tarifario = $this->request->nome_tarifario;
-        $tarifario->data_servico = $this->request->data_servico;
-        $tarifario->qtdeAllotment = $this->request->qtdeAllotment;
-        $tarifario->ativo = isset($_POST['ativo']) ? 1 : 0;
+        //$tarifario->data_servico = $this->request->data_servico;
+        //$tarifario->qtdeAllotment = $this->request->qtdeAllotment;
+        //$tarifario->ativo = isset($_POST['ativo']) ? 1 : 0;
 
         $tarifario->save();
 

@@ -130,15 +130,25 @@ class ReservasService {
     }
 
     private function cadastrar() {
-        [$cod_tarifario, $horario, $nome_titular, $idade_titular, $idade_junior, $idade_senior, $qtde_pax] = [$this->dadosCorpoRequest['cod_tarifario'], $this->dadosCorpoRequest['horario'],
-                    $this->dadosCorpoRequest['nome_titular'], $this->dadosCorpoRequest['idade_titular'],
-                    $this->dadosCorpoRequest['idade_junior'], $this->dadosCorpoRequest['idade_senior'],
-                    $this->dadosCorpoRequest['qtde_pax']];
-
-        if ($cod_tarifario && $horario && $nome_titular && $idade_titular && $idade_junior && $idade_senior && $qtde_pax) {
-            if ($this->ReservasRepository->insereReserva($cod_tarifario, $horario, $nome_titular, $idade_titular, $idade_junior, $idade_senior, $qtde_pax) > 0) {
+        [$cod_tarifario, $horario, $nome_titular, $idade_titular, $idade_junior, $idade_senior, $info_voo_htl, $qtde_pax] =
+            [$this->dadosCorpoRequest['cod_tarifario'], $this->dadosCorpoRequest['horario'],
+            $this->dadosCorpoRequest['nome_titular'], $this->dadosCorpoRequest['idade_titular'],
+            $this->dadosCorpoRequest['idade_junior'], $this->dadosCorpoRequest['idade_senior'],
+            $this->dadosCorpoRequest['info_voo_htl'], $this->dadosCorpoRequest['qtde_pax']];
+                
+        if ($cod_tarifario && $horario && $nome_titular && $idade_titular && $idade_junior && $idade_senior && $info_voo_htl && $qtde_pax) {
+            if ($this->ReservasRepository->insereReserva($cod_tarifario, $horario, $nome_titular, $idade_titular, $idade_junior, $idade_senior, $info_voo_htl, $qtde_pax) > 0) {
                 $numInserido = $this->ReservasRepository->getMySQL()->getDb()->lastInsertId();
                 $this->ReservasRepository->getMySQL()->getDb()->commit();
+
+                $con = mysqli_connect("localhost", "root", "", "enlargebd");
+                mysqli_query($con, "SET @p0='" . $qtde_pax . "'");
+                mysqli_query($con, "SET @p1='" . $cod_tarifario . "'");
+                mysqli_query($con, "SET @p2='" . $numInserido . "'");
+
+                mysqli_multi_query($con, "CALL PR_ALLOTMENT(@p0, @p1, @p2)") OR DIE(mysqli_error($con));
+
+                mysqli_close($con);
 
                 return ['num_inserido' => $numInserido];
             }
@@ -147,11 +157,24 @@ class ReservasService {
         }
         throw new InvalidArgumentException(ConstantesGenericasUtil::MSG_ERRO_LOGIN_SENHA_OBRIGATORIO);
     }
-    
+
     private function atualizar() {
-        if ($this->ReservasRepository->updateReserva($this->dados['num_reserva'], $this->dadosCorpoRequest) > 0){
+        
+        $codTarif = $this->dadosCorpoRequest['cod_tarifario'];
+        
+        if ($this->ReservasRepository->updateReserva($this->dados['num_reserva'], $this->dadosCorpoRequest) > 0) {
             $this->ReservasRepository->getMySQL()->getDb()->commit();
-                        
+            
+            $con = mysqli_connect("localhost", "root", "", "enlargebd");
+            
+            mysqli_query($con, "SET @p0='" . $this->dados['qtde_pax'] . "'");
+            mysqli_query($con, "SET @p1='" . $this->dadosCorpoRequest['cod_tarifario'] . "'");
+            mysqli_query($con, "SET @p2='" . $this->dados['num_reserva'] . "'");
+
+            mysqli_multi_query($con, "CALL PR_ALLOTMENT(@p0, @p1, @p2)") OR DIE(mysqli_error($con));
+
+            mysqli_close($con);
+
             return ConstantesGenericasUtil::MSG_ATUALIZADO_SUCESSO;
         }
         $this->ReservasRepository->getMySQL()->getDb()->rollBack();

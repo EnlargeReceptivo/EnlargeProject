@@ -49,8 +49,8 @@
                     <div class="col-md-6 text-right"> 
                         <a href="?controller=ServicoController&method=criar" class="btn btn-success"><i class="material-icons">&#xE147;</i> 
                             <span>Criar novo Serviço</span></a>
-                        <a href="#" class="btn btn-warning"><i class="	material-icons">&#xe3c9;</i> 
-                            <span>Editar Serviço</span></a>							
+                        <!--<a href="#" class="btn btn-warning"><i class="	material-icons">&#xe3c9;</i> 
+                            <span>Editar Serviço</span></a>-->							
                     </div>
                 </div>
             </div>
@@ -58,19 +58,20 @@
                 <thead>
                     <tr>
                         <th class="centerCheck">Cód</th>
-                <a><th>Título</th></a>
+                <a><th>Serviço</th></a>
                 <th>Cidade</th>
                 <th class="centerCheck">TW Início</th>
                 <th class="centerCheck">TW Fim</th>
                 <th class="centerCheck">Pickup?</th>
-                <th class="centerCheck">Deadline (dias)</th>
-                <th class="centerCheck">Preço (R$)</th>
-                <th class="centerCheck">Ativo?</th>
+                <th class="centerCheck">Deadline </th>
+                <th class="centerCheck">Preço</th>
                 <th class="centerCheck">Ação</th>
                 </tr>
                 </thead>
                 <tbody>
                     <?php
+                    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+                    date_default_timezone_set('America/Sao_Paulo');
                     if ($servicos) {
                         foreach ($servicos as $servico) {
                             ?>
@@ -88,22 +89,56 @@
                                 <td><?php echo $servico->ds_cidade; ?></td>
                                 <td  class="centerCheck"><?php
                                     $dt_janela_viagem_inicio1 = str_replace('-', '/', $servico->dt_janela_viagem_inicio);
-                                    echo date('d/m/Y', strtotime($dt_janela_viagem_inicio1));
+                                    echo strftime('%d/%b/%y', strtotime($dt_janela_viagem_inicio1));
                                     ?></td>
                                 <td class="centerCheck"><?php
                                     $dt_janela_viagem_fim1 = str_replace('-', '/', $servico->dt_janela_viagem_fim);
-                                    echo date('d/m/Y', strtotime($dt_janela_viagem_fim1));
+                                    echo strftime('%d/%b/%y', strtotime($dt_janela_viagem_fim1));
                                     ?></td>
-                                <td class="centerCheck"><?php echo $servico->fg_exige_pickup; ?></td>
+                                <td class="centerCheck">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" disabled 
+                                        <?php
+                                        if (isset($servico->fg_exige_pickup)) {
+                                            if ($servico->fg_exige_pickup == 1) {
+                                                echo 'checked';
+                                            } else {
+                                                echo'unchecked';
+                                            }
+                                        }
+                                        ?>>
+                                        <label class="form-check-label" for="flexCheckDisabled"></label>
+                                    </div>
+                                </td>
                                 <td class="centerCheck"><?php
                                     echo $servico->nr_deadline;
-                                    ?></td>
-                                <td class="centerCheck"><?php echo $servico->nr_valor_unitario; ?></td>
-                                <td class="centerCheck"><?php echo $servico->fg_ativo; ?></td>
+                                    ?>
+                                </td>
+                                <td class="centerCheck"><?php
+                                    $preco = str_replace('.', ',', $servico->nr_valor_unitario);
+                                    echo "R$ " . $preco;
+                                    ?>
+                                </td>
+
+
+                                                                        <!--<td class="centerCheck">
+                                                                            <div class="form-check">
+                                                                                <input class="form-check-input" type="checkbox" value="" disabled <?php
+                                /* if (isset($servico->fg_ativo)) {
+                                  if ($servico->fg_ativo == 1) {
+                                  echo 'checked';
+                                  } else {
+                                  echo'unchecked';
+                                  }
+                                  } */
+                                ?>>
+                                                                                <label class="form-check-label" for="flexCheckDisabled"></label>
+                                                                            </div>
+                                                                        </td>-->
+
+
                                 <td class="centerCheck">
                                     <a href="?controller=ServicoController&method=editar&id=<?php echo $servico->id_servico; ?>" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                </td>
-                                <td>
                                 </td>
                             </tr>
                             <?php

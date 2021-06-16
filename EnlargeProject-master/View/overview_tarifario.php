@@ -70,7 +70,7 @@
                                 <div class="card" style="width: 150%; height: 100%;">
                                     </br>
                                     <div class="card-body">
-                                        <h5 class="card-title">Código: 
+                                        <h5 class="card-title">Código Tarifário: 
                                             <?php
                                             echo isset($tarifario->cod_tarifario) ? $tarifario->cod_tarifario : null;
                                             ?>
@@ -87,7 +87,13 @@
                                         </p>
                                         <p class="card-text text-left">Data: 
                                             <?php
-                                            echo isset($tarifario->data_servico) ? $tarifario->data_servico : null;
+                                            $dtTarf = str_replace('-', '/', $tarifario->data_servico);
+                                            echo strftime('%d/%b/%Y', strtotime($dtTarf));
+                                            ?>
+                                        </p>
+                                        <p class="card-text text-left">Valor Unitário (R$): 
+                                            <?php
+                                            echo str_replace('.', ',', $tarifario->valor_unitario);
                                             ?>
                                         </p>
                                     </div>
@@ -97,17 +103,19 @@
                             <div class="col-md-6">
                                 <div class="card" style="width: 60%; float: right">
                                     <div class="card-body">
-                                        <h5 class="card-title text-left">Descrição</h5>
-                                        <p class="card-text text-left">nao tem                                      
-                                        </p></br></br>
-                                        <p class="card-text">Informações Úteis</p>
+                                        <p class="card-text" style="font-weight: bold">Informações Úteis</p>
                                         <p class="card-text text-left">Ativo? 
                                             <span class="custom-checkbox">
-                                                <input type="checkbox" id="checkbox2" disabled>
+                                                <input type="checkbox" id="checkbox2" disabled <?php
+                                                if (isset($tarifario->ativo)) {
+                                                    if ($tarifario->ativo == 1) {
+                                                        echo 'checked';
+                                                    } else {
+                                                        echo'unchecked';
+                                                    }
+                                                }
+                                                ?>>
                                                 <label for="checkbox2">
-                                                    <?php
-                                                        echo isset($tarifario->ativo) ? $tarifario->ativo : null;
-                                                    ?>
                                                 </label>
                                             </span>
                                         </p>
@@ -132,7 +140,7 @@
                                             <th>Código</th>
                                             <th>Tarifário</th>
                                             <tr>
-                                                <td>Salve</td>
+                                                <td>Teste</td>
                                                 <td>Ok</td>
                                             </tr>
                                             </tbody>

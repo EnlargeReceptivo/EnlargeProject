@@ -49,11 +49,11 @@ class Servico {
         return false;
     }
 
-    public function cadastrarServico($ds_nome_servico, $dt_criacao_data, $ds_cidade, $nr_idade_minima, $nr_idade_maxima, $dt_janela_viagem_inicio, $dt_janela_viagem_fim, $ds_dias_semana, $nr_deadline, $fg_exige_pickup, $fg_ativo, $ds_descricao_servico, $nr_quantidade_loteamento, $nr_valor_unitario, $nr_qt_min_passageiros, $fg_privativo) {
+    public function cadastrarServico($ds_nome_servico, $ds_cidade, $nr_idade_minima, $nr_idade_maxima, $dt_janela_viagem_inicio, $dt_janela_viagem_fim, $ds_dias_semana, $nr_deadline, $fg_exige_pickup, $fg_ativo, $ds_descricao_servico, $nr_quantidade_loteamento, $nr_valor_unitario, $nr_qt_min_passageiros, $fg_privativo) {
         $conexao = Conexao::getInstance();
 
-        $query = "INSERT INTO tb_servicos (ds_nome_servico, dt_criacao_data, ds_cidade, nr_idade_minima, nr_idade_maxima, dt_janela_viagem_inicio, dt_janela_viagem_fim, ds_dias_semana, nr_deadline, fg_exige_pickup, fg_ativo, ds_descricao_servico, nr_quantidade_loteamento, nr_valor_unitario, nr_qt_min_passageiros, fg_privativo) "
-                . "values ('$ds_nome_servico', '$dt_criacao_data', '$ds_cidade', '$nr_idade_minima', '$nr_idade_maxima', '$dt_janela_viagem_inicio', '$dt_janela_viagem_fim', '$ds_dias_semana', '$nr_deadline', '$fg_exige_pickup', '$fg_ativo', '$ds_descricao_servico', '$nr_quantidade_loteamento', '$nr_valor_unitario', '$nr_qt_min_passageiros', '$fg_privativo'); ";
+        $query = "INSERT INTO tb_servicos (ds_nome_servico, ds_cidade, nr_idade_minima, nr_idade_maxima, dt_janela_viagem_inicio, dt_janela_viagem_fim, ds_dias_semana, nr_deadline, fg_exige_pickup, fg_ativo, ds_descricao_servico, nr_quantidade_loteamento, nr_valor_unitario, nr_qt_min_passageiros, fg_privativo) "
+                . "values ('$ds_nome_servico', '$ds_cidade', '$nr_idade_minima', '$nr_idade_maxima', '$dt_janela_viagem_inicio', '$dt_janela_viagem_fim', '$ds_dias_semana', '$nr_deadline', '$fg_exige_pickup', '$fg_ativo', '$ds_descricao_servico', '$nr_quantidade_loteamento', '$nr_valor_unitario', '$nr_qt_min_passageiros', '$fg_privativo'); ";
         echo $query;
         if ($conexao = Conexao::getInstance()) {
             $stmt = $conexao->prepare($query);

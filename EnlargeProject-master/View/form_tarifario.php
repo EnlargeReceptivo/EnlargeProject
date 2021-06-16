@@ -52,11 +52,6 @@
                             <span>Salvar</span>
                         </button>
 
-                        <button class="btn btn-secondary" type="submit">
-                            <i class="material-icons">cleaning_services</i>
-                            <span>Limpar</span>
-                        </button>
-
                         <a href="?controller=TarifarioController&method=listar" class="btn btn-danger" type="submit">
                             <i class="material-icons">&#xe14a;</i>
                             <span>Cancelar</span>
@@ -85,8 +80,12 @@
                                             <span class="input-group-text"><i class="material-icons">&#xe614;</i></span>
                                         </div>
                                         <input type="text" name="data_servico" id="data_servico" class="form-control" value="<?php
-                                        echo isset($tarifario->data_servico) ? $tarifario->data_servico : null;
-                                        ?>" placeholder="Data Serviço">
+                                        if (isset($tarifario->data_servico)) {
+                                            $date = $tarifario->data_servico;
+                                            echo date('d/m/Y', strtotime($date));
+                                        }
+                                        //echo isset($tarifario->data_servico) ? $tarifario->data_servico : null;
+                                        ?> "placeholder="Data Serviço" disabled>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -95,29 +94,8 @@
                                             <span class="input-group-text"><i class="material-icons">production_quantity_limits</i></span>
                                         </div>
                                         <input type="text" name="qtdeAllotment" id="qtdeAllotment" class="form-control" value="<?php
-                                        echo isset($tarifario->qtdeAllotment) ? $tarifario->qtdeAllotment : null;
-                                        ?>" placeholder="Qtde. Allotment">
-                                    </div>
-
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text"><i class="material-icons">toggle_on</i></span>
-                                        </div>
-                                        <p class="form-control">Ativo?<p>
-                                        <div>   
-                                            <span class="custom-checkbox">
-                                                <input type="checkbox" name="fg_ativo" id="fg_ativo" <?php
-                                                       if (isset($tarifario->fg_ativo)) {
-                                                           if ($tarifario->fg_ativo == 1) {
-                                                               echo 'checked';
-                                                           } else {
-                                                               echo'unchecked';
-                                                           }
-                                                       }
-                                                       ?> >
-                                                <label for="checkbox2"></label>
-                                            </span>
-                                        </div>
+                                               echo $tarifario->qtdeAllotment;
+                                               ?>" placeholder="Qtde. Allotment" disabled>
                                     </div>
                                 </div>
                                 </form>

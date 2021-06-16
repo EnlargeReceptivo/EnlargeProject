@@ -50,11 +50,11 @@
                         </h2>
                     </div>
                     <div class="col-md-6 text-right"> 
-                        <a href="?controller=ServicoController&method=editar&id=<?php echo $reserva->num_reserva; ?>" class="btn btn-warning">
+                        <a href="?controller=ReservaController&method=editar&id=<?php echo $reserva->num_reserva; ?>" class="btn btn-warning">
                             <i class="material-icons">&#xe3c9;</i> 
                             <span>Editar</></span>
                         </a>
-                        <a href="?controller=ServicoController&method=listar" class="btn btn-danger">
+                        <a href="?controller=ReservaController&method=listar" class="btn btn-danger">
                             <i class="material-icons">&#xe317;</i> 
                             <span>Voltar</span>
                         </a>						
@@ -81,7 +81,8 @@
                                         </p>
                                         <p class="card-text text-left">Data: 
                                             <?php
-                                            echo isset($reserva->data_servico) ? $reserva->data_servico : null;
+                                            //$dtSer = str_replace('-', '/', $reserva->data_criacao);
+                                            echo date('d/M/Y', strtotime($reserva->data_servico));
                                             ?>
                                         </p>
                                         <p class="card-text text-left">Horário: 
@@ -114,14 +115,10 @@
                                             echo isset($reserva->status_reserva) ? $reserva->status_reserva : null;
                                             ?> 
                                         </p>
-                                        <p class="card-text text-left">Criado Por: 
-                                            <?php
-                                            echo isset($reserva->criado_por) ? $reserva->criado_por : null;
-                                            ?> 
-                                        </p>
                                         <p class="card-text text-left">Data Criação: 
                                             <?php
-                                            echo isset($reserva->data_criacao) ? $reserva->data_criacao : null;
+                                            $dtCria = str_replace('-', '/', $reserva->data_criacao);
+                                            echo date('d/M/Y', strtotime($dtCria)) . " às " . date('h:i:s', strtotime($dtCria));
                                             ?> 
                                         </p>
                                     </div>
@@ -153,12 +150,12 @@
                                             ?> 
                                         </p></br>
                                         <p class="card-text">Informações Úteis</p>
-                                        <p class="card-text text-left">Ativo? 
+                                        <!--<p class="card-text text-left">Ativo? 
                                             <span class="custom-checkbox">
                                                 <input type="checkbox" id="checkbox2" unchecked disabled>
                                                 <label for="checkbox2"></label>
                                             </span>
-                                        </p>
+                                        </p>-->
                                         <a href="#" class="btn btn-danger btn-sm">Cancelar</a>
                                     </div>
                                 </div>

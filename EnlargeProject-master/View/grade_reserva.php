@@ -46,10 +46,10 @@
                         <h2 class="table-subtitle">Gerenciar <b>Reservas</b></h2>
                     </div>
                     <div class="col-md-6 text-right"> 
-                        <a href="#" class="btn btn-warning"><i class="material-icons">&#xe3c9;</i> 
+                       <!-- <a href="#" class="btn btn-warning"><i class="material-icons">&#xe3c9;</i> 
                             <span>Editar</span></a>
                         <a href="#" class="btn btn-danger"><i class="material-icons">&#xe14a;</i> 
-                            <span>Excluir</span></a>
+                            <span>Excluir</span></a> -->
                     </div>
                 </div>
             </div>
@@ -92,7 +92,12 @@
                                     </a>
                                 </td>
                                 <td class="centerCheck"><?php echo $reserva->qtde_pax; ?></td>
-                                <td class="centerCheck"><?php echo $reserva->data_servico; ?></td>
+                                <td class="centerCheck">
+                                    <?php
+                                    $dtRes = str_replace('-', '/', $reserva->data_servico);
+                                    echo strftime('%d/%b/%Y', strtotime($dtRes));
+                                    ?>
+                                </td>
                                 <td class="centerCheck"><?php echo $reserva->info_voo_htl; ?></td>
                                 <td class="centerCheck"><?php echo $reserva->status_reserva; ?></td>
                                 <td class="centerCheck">
